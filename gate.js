@@ -1,13 +1,13 @@
 function a() {
-  return [2, 3, 5, 7].reduce((x, y) => x * y);
+  return [2, 3, 5, 7].reduce((x, y) => x * y); // 210
 }
 
 function b() {
-  return new Date(2018, 11, 31).getFullYear();
+  return new Date(2018, 11, 31).getFullYear(); // 2018
 }
 
 function c() {
-  return Math.floor(Math.PI * Math.E * 100);
+  return Math.floor(Math.PI * Math.E * 100); // 853
 }
 
 function resolve() {
@@ -19,15 +19,22 @@ function resolve() {
 function unlock() {
   const input = prompt("Password:");
   if (Number(input) !== resolve()) {
-    document.body.innerHTML = "Nope 🚫";
+    document.body.innerHTML = "Access denied 🚫";
     return;
   }
 
-  document.getElementById("photo").style.display = "block";
+  const btn = document.getElementById("enterBtn");
+  btn.style.display = "inline-block";
 
-  const music = document.getElementById("music");
-  music.style.display = "block";
-  music.play();
+  btn.onclick = () => {
+    btn.style.display = "none";
+
+    const img = document.getElementById("photo");
+    const music = document.getElementById("music");
+
+    img.style.display = "block";
+    music.play();
+  };
 }
 
-setTimeout(unlock, 800);
+setTimeout(unlock, 500);
