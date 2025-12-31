@@ -3,16 +3,16 @@ function a() {
 }
 
 function b() {
-  return new Date(2018, 11, 31).getFullYear(); // 2018
+  return new Date(2018, 11, 31).getFullYear();
 }
 
 function c() {
-  return Math.floor(Math.PI * Math.E * 100); // 853
+  return Math.floor(Math.PI * Math.E * 100);
 }
 
 function resolve() {
   const x = b() + a();
-  const y = c() - 209;
+  const y = c() - 644;
   return x - y;
 }
 
