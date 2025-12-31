@@ -1,55 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Private Page</title>
+
   <style>
     body {
       margin: 0;
       min-height: 100vh;
       background: #0f0f0f;
       color: #fff;
-      font-family: system-ui;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.06), transparent 65%);
+      pointer-events: none;
     }
 
     .container {
       text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    button {
+      padding: 12px 22px;
+      border-radius: 14px;
+      border: none;
+      background: linear-gradient(135deg, #1db954, #2ed573);
+      color: #000;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(30, 215, 96, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      display: none;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 35px rgba(30, 215, 96, 0.45);
+    }
+
+    button:active {
+      transform: scale(0.96);
     }
 
     img {
-      width: 280px;
-      border-radius: 14px;
+      width: min(70vw, 360px);
+      max-width: 90vw;
+      border-radius: 18px;
       display: none;
-      margin: 20px auto;
+      margin: 24px auto;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: reveal 1.2s ease forwards, glow 3s ease-in-out infinite;
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.35),
+        0 0 35px rgba(255,255,255,0.25);
+    }
+
+    @media (max-width: 600px) {
+      img {
+        width: min(85vw, 420px);
+      }
     }
 
     audio {
       display: none;
     }
 
-    button {
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: none;
-      background: #1db954;
-      color: #000;
-      font-size: 15px;
-      cursor: pointer;
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(255,255,255,0.15);
+      }
+      50% {
+        box-shadow: 0 0 35px rgba(255,255,255,0.3);
+      }
     }
   </style>
 </head>
+
 <body>
+  <div class="container">
+    <button id="enterBtn">Enter 🔓</button>
 
-<div class="container">
-  <button id="enterBtn" style="display:none;">Enter 🔓</button>
+    <img id="photo" src="photo.jpg" alt="Hidden Image" />
+    <audio id="music" src="music.mp3" loop></audio>
+  </div>
 
-  <img id="photo" src="photo.jpg">
-  <audio id="music" src="music.mp3" loop></audio>
-</div>
-
-<script src="gate.js"></script>
+  <script src="gate.js"></script>
 </body>
 </html>
