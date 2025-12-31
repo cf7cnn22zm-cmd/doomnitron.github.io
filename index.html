@@ -5,6 +5,7 @@
   <title>Private Page</title>
 
   <style>
+    /* ---------- Base layout ---------- */
     body {
       margin: 0;
       min-height: 100vh;
@@ -15,56 +16,94 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
+
+      /* cute & soft */
+      animation: breathe 14s ease-in-out infinite;
     }
 
+    @keyframes breathe {
+      0%, 100% {
+        background-color: #0f0f0f;
+      }
+      50% {
+        background-color: #121212;
+      }
+    }
+
+    /* subtle vignette */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.06), transparent 65%);
+      background: radial-gradient(
+        circle at center,
+        rgba(255,255,255,0.06),
+        transparent 65%
+      );
       pointer-events: none;
     }
 
+    /* ---------- Container ---------- */
     .container {
       text-align: center;
       position: relative;
       z-index: 1;
+
+      padding: 32px 36px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.45);
     }
 
+    /* ---------- Button ---------- */
     button {
       padding: 12px 22px;
       border-radius: 14px;
       border: none;
-      background: linear-gradient(135deg, #1db954, #2ed573);
-      color: #000;
       font-size: 15px;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(30, 215, 96, 0.35);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
       display: none;
+
+      /* cute pastel */
+      background: linear-gradient(135deg, #a8ffce, #7ee8fa);
+      color: #003;
+
+      box-shadow: 0 12px 30px rgba(126, 232, 250, 0.35);
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
     }
 
     button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 35px rgba(30, 215, 96, 0.45);
+      box-shadow: 0 16px 38px rgba(126, 232, 250, 0.45);
     }
 
     button:active {
       transform: scale(0.96);
     }
 
+    /* ---------- Image ---------- */
     img {
       width: min(70vw, 360px);
       max-width: 90vw;
-      border-radius: 18px;
-      display: none;
       margin: 24px auto;
-      opacity: 0;
-      transform: translateY(12px);
-      animation: reveal 1.2s ease forwards, glow 3s ease-in-out infinite;
+      display: none;
+
+      border-radius: 18px;
+
+      /* cute & soft visuals */
+      filter: saturate(1.05) brightness(1.03);
       box-shadow:
         0 10px 30px rgba(0,0,0,0.35),
         0 0 35px rgba(255,255,255,0.25);
+
+      opacity: 0;
+      transform: translateY(12px);
+      animation:
+        reveal 1.2s ease forwards,
+        glow 3s ease-in-out infinite;
     }
 
     @media (max-width: 600px) {
@@ -73,8 +112,11 @@
       }
     }
 
-    audio {
-      display: none;
+    @media (hover: hover) {
+      img:hover {
+        transform: translateY(-4px) scale(1.01);
+        transition: transform 0.6s ease;
+      }
     }
 
     @keyframes reveal {
@@ -86,11 +128,19 @@
 
     @keyframes glow {
       0%, 100% {
-        box-shadow: 0 0 20px rgba(255,255,255,0.15);
+        box-shadow:
+          0 10px 30px rgba(0,0,0,0.35),
+          0 0 25px rgba(255,255,255,0.18);
       }
       50% {
-        box-shadow: 0 0 35px rgba(255,255,255,0.3);
+        box-shadow:
+          0 10px 30px rgba(0,0,0,0.35),
+          0 0 40px rgba(255,255,255,0.3);
       }
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
