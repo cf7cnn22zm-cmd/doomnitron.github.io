@@ -12,7 +12,7 @@ function c() {
 
 function resolve() {
   const x = b() + a();
-  const y = c() - 624;
+  const y = c() - 209;
   return x - y;
 }
 
