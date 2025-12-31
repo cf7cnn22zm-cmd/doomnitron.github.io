@@ -5,29 +5,50 @@
   <title>Private Page</title>
   <style>
     body {
+      margin: 0;
+      min-height: 100vh;
       background: #0f0f0f;
       color: #fff;
       font-family: system-ui;
-      text-align: center;
-      padding-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
+    .container {
+      text-align: center;
+    }
+
     img {
       width: 280px;
       border-radius: 14px;
       display: none;
-      margin-bottom: 20px;
+      margin: 20px auto;
     }
+
     audio {
       display: none;
+    }
+
+    button {
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      background: #1db954;
+      color: #000;
+      font-size: 15px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-<h2>Access Denied</h2>
+<div class="container">
+  <button id="enterBtn" style="display:none;">Enter 🔓</button>
 
-<img id="photo" src="photo.jpg">
-<audio id="music" src="music.mp3" loop></audio>
+  <img id="photo" src="photo.jpg">
+  <audio id="music" src="music.mp3" loop></audio>
+</div>
 
 <script src="gate.js"></script>
 </body>
