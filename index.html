@@ -5,7 +5,7 @@
   <title>Private Page</title>
 
   <style>
-    /* ---------- Base layout ---------- */
+    /* -------- Base layout -------- */
     body {
       margin: 0;
       min-height: 100vh;
@@ -16,21 +16,14 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-
-      /* cute & soft */
       animation: breathe 14s ease-in-out infinite;
     }
 
     @keyframes breathe {
-      0%, 100% {
-        background-color: #0f0f0f;
-      }
-      50% {
-        background-color: #121212;
-      }
+      0%, 100% { background-color: #0f0f0f; }
+      50% { background-color: #121212; }
     }
 
-    /* subtle vignette */
     body::before {
       content: "";
       position: fixed;
@@ -43,20 +36,18 @@
       pointer-events: none;
     }
 
-    /* ---------- Container ---------- */
+    /* -------- Container -------- */
     .container {
       text-align: center;
       position: relative;
       z-index: 1;
-
-      padding: 32px 36px;
-      border-radius: 22px;
+      padding: 28px 32px;
+      border-radius: 24px;
       background: rgba(255, 255, 255, 0.04);
-      box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
     }
 
-    /* ---------- Button ---------- */
+    /* -------- Button -------- */
     button {
       padding: 12px 22px;
       border-radius: 14px;
@@ -65,14 +56,11 @@
       cursor: pointer;
       display: none;
 
-      /* cute pastel */
       background: linear-gradient(135deg, #a8ffce, #7ee8fa);
       color: #003;
 
       box-shadow: 0 12px 30px rgba(126, 232, 250, 0.35);
-      transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     button:hover {
@@ -84,20 +72,19 @@
       transform: scale(0.96);
     }
 
-    /* ---------- Image ---------- */
+    /* -------- Image (BIG on mobile) -------- */
     img {
-      width: min(70vw, 360px);
+      width: auto;
+      height: min(70vh, 520px);
       max-width: 90vw;
-      margin: 24px auto;
+      margin: 20px auto;
       display: none;
 
-      border-radius: 18px;
-
-      /* cute & soft visuals */
+      border-radius: 22px;
       filter: saturate(1.05) brightness(1.03);
       box-shadow:
-        0 10px 30px rgba(0,0,0,0.35),
-        0 0 35px rgba(255,255,255,0.25);
+        0 12px 35px rgba(0,0,0,0.4),
+        0 0 40px rgba(255,255,255,0.25);
 
       opacity: 0;
       transform: translateY(12px);
@@ -108,14 +95,9 @@
 
     @media (max-width: 600px) {
       img {
-        width: min(85vw, 420px);
-      }
-    }
-
-    @media (hover: hover) {
-      img:hover {
-        transform: translateY(-4px) scale(1.01);
-        transition: transform 0.6s ease;
+        height: 78vh;
+        max-width: 92vw;
+        border-radius: 26px;
       }
     }
 
@@ -129,18 +111,39 @@
     @keyframes glow {
       0%, 100% {
         box-shadow:
-          0 10px 30px rgba(0,0,0,0.35),
+          0 12px 35px rgba(0,0,0,0.4),
           0 0 25px rgba(255,255,255,0.18);
       }
       50% {
         box-shadow:
-          0 10px 30px rgba(0,0,0,0.35),
+          0 12px 35px rgba(0,0,0,0.4),
           0 0 40px rgba(255,255,255,0.3);
       }
     }
 
     audio {
       display: none;
+    }
+
+    /* -------- Hearts / Sparkles -------- */
+    .sparkle {
+      position: fixed;
+      bottom: -20px;
+      font-size: 18px;
+      opacity: 0.6;
+      animation: floatUp 6s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) scale(0.8);
+        opacity: 0.6;
+      }
+      to {
+        transform: translateY(-120vh) scale(1.1);
+        opacity: 0;
+      }
     }
   </style>
 </head>
